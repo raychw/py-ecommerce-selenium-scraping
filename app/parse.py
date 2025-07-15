@@ -59,11 +59,12 @@ def parse_and_write_to_file(html: str, file_name: str) -> None:
 
     for card in cards:
         title_tag = card.select_one(".title")
-        title = title_tag[
-            "title"
-        ] if title_tag and title_tag.has_attr("title") else title_tag.get_text(
-            strip=True
-        )
+        if title_tag:
+            title = title_tag[
+                "title"
+            ] if title_tag and title_tag.has_attr("title") else title_tag.get_text(
+                strip=True
+            )
 
         description_tag = card.select_one(".description")
         raw_description = description_tag.get_text(
